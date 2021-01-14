@@ -5,15 +5,21 @@
 using namespace std;
 
 
-class Platforms
+class Platform
 {
 private:
 	string m_name;
 	string m_manufacturer;
 public:
-	void GetName(string namePlatform)
+	//Make a constructor you fucking idiot, for all of them
+	//why do you even write in English if you're only writing it for yourself?
+	//wait, why do you even talk to yourself
+	//you need to see a doctor dude
+	//да уж, мне реально очень нужно поспать, пожалуй пойду займусь этим 
+
+	string GetName()
 	{
-		m_name = namePlatform;
+		return m_name;
 	}
 
 	void GetManufacturer(string nameManu)
@@ -34,17 +40,14 @@ public:
 	}
 };
 
-class Games
+class Game
 {
 private:
 	string m_name;
 	string m_publisher;
 	string m_developer;
 public:
-	void GetName(string nameGame)
-	{
-		m_name = nameGame;
-	}
+	
 
 	void GetPublisher(string namePublish)
 	{
@@ -69,17 +72,14 @@ public:
 	}
 };
 
-class Achievments
+class Achievment
 {
 private:
 	string m_title;
 	string m_description;
 	int m_score;
 public:
-	void GetTitle(string nameTitle)
-	{
-		m_title = nameTitle;
-	}
+	
 
 	void GetDescription(string descr)
 	{
