@@ -23,8 +23,14 @@ public:
 
 	void CreateGameArray(int amount)
 	{
+		int* array;
+		array = new int[amount];
+	}
 
-
+	void DeleteGameArray(int *pointer)
+	{
+		delete pointer;
+		delete[] pointer;
 	}
 };
 
@@ -52,9 +58,14 @@ public:
 
 	void CreateAchievmentArray(int amount)
 	{
+		int* array;
+		array = new int[amount];
+	}
 
-
-
+	void DeleteAchievmentArray(int* pointer)
+	{
+		delete pointer;
+		delete[] pointer;
 	}
 };
 
