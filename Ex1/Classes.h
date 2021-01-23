@@ -4,39 +4,44 @@
 
 using namespace std;
 
-
-class Platform
+class Achievment
 {
 private:
-	string m_name;
-	string m_manufacturer;
+	string m_title;
+	string m_description;
+
+	int m_score;
 public:
-	//Make a constructor you fucking idiot, for all of them
-	//why do you even write in English if you're only writing it for yourself?
-	//wait, why do you even talk to yourself
-	//you need to see a doctor dude
-	//да уж, мне реально очень нужно поспать, пожалуй пойду займусь этим 
 
-	string GetName()
+	Achievment(string title = "Random Title", string description = "A random Description", int score = 10)
 	{
-		return m_name;
+		m_title = title;
+		m_description = description;
+		m_score = score;
 	}
 
-	void GetManufacturer(string nameManu)
+	void CreateAchievmentObj(string title, string description, int score)
 	{
-		m_manufacturer = nameManu;
+		m_title = title;
+		m_description = description;
+		m_score = score;
 	}
 
-	void CreateGameArray(int amount)
+
+
+	string GetTitle()
 	{
-		int* array;
-		array = new int[amount];
+		return m_title;
 	}
 
-	void DeleteGameArray(int *pointer)
+	string GetDescription()
 	{
-		delete pointer;
-		delete[] pointer;
+		return m_description;
+	}
+
+	int GetScore()
+	{
+		return m_score;
 	}
 };
 
@@ -46,48 +51,92 @@ private:
 	string m_name;
 	string m_publisher;
 	string m_developer;
+
+	Achievment* pAPtr = nullptr;
 public:
-	
-
-	void GetPublisher(string namePublish)
+	Game(string name = "RandomName", string publisher = "Random Publisher", string developer = "RandomDeveloper")
 	{
-		m_publisher = namePublish;
+		m_name = name;
+		m_publisher = publisher;
+		m_developer = developer;
 	}
 
-	void GetDev(string nameDev)
+	void CreateGameObj(string name, string publisher, string developer)
 	{
-		m_developer = nameDev;
+		m_name = name;
+		m_publisher = publisher;
+		m_developer = developer;
 	}
 
-	void CreateAchievmentArray(int amount)
+
+
+	string GetName()
 	{
-		int* array;
-		array = new int[amount];
+		return m_name;
 	}
 
-	void DeleteAchievmentArray(int* pointer)
+	string GetPublisher()
 	{
-		delete pointer;
-		delete[] pointer;
+		return m_publisher;
+	}
+
+	string GetDev()
+	{
+		return m_developer;
+	}
+
+								//Achievment part
+	void CreateAchievmentArray(int size)
+	{
+		pAPtr = new Achievment[size];
+	}
+
+	void DeleteAchievmentArray(Achievment* ptr)
+	{
+		delete[] ptr;
+		ptr = nullptr;
 	}
 };
 
-class Achievment
+class Platform
 {
 private:
-	string m_title;
-	string m_description;
-	int m_score;
+	string m_name;
+	string m_manufacturer;
+
+	Game* pGPtr = nullptr;
 public:
-	
 
-	void GetDescription(string descr)
+	Platform(string name, string manufacturer)
 	{
-		m_description = descr;
+		m_name = name;
+		m_manufacturer = manufacturer;
 	}
 
-	void GetScore(int amount)
+
+	string GetName()
 	{
-		m_score = amount;
+		return m_name;
 	}
+
+	string GetManufacturer()
+	{
+		return m_manufacturer;
+	}
+
+									//Game part
+
+	void CreateGameArray(int size)
+	{
+		pGPtr = new Game[size];
+	}
+
+	void DeleteGameArray(Game* ptr)
+	{
+		delete[] ptr;
+		ptr = nullptr;
+	}
+
+
+	~Platform();
 };
