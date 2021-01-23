@@ -55,7 +55,7 @@ private:
 	string m_publisher;
 	string m_developer;
 
-	Achievment* pAPtr = nullptr;
+	int m_AchievmentArraySize = 200;
 public:
 	Game(string name = "RandomName", string publisher = "Random Publisher", string developer = "RandomDeveloper")
 	{
@@ -89,12 +89,19 @@ public:
 	}
 
 								//Achievment part
-	void CreateAchievmentArray(int size)
+	Achievment* pAPtr = new Achievment[m_AchievmentArraySize];
+
+	void AddToAchievmentArray(int pos, Achievment* obj)
 	{
-		pAPtr = new Achievment[size];
+		pAPtr[pos] = *obj;
 	}
 
-	void DeleteAchievmentArray(Achievment* ptr)
+	Achievment AccessGameArray(int pos)
+	{
+		return pAPtr[pos];
+	}
+
+	void DeleteGameArray(Achievment* ptr)
 	{
 		delete[] ptr;
 		ptr = nullptr;
@@ -110,7 +117,8 @@ private:
 	string m_name;
 	string m_manufacturer;
 
-	Game* pGPtr = nullptr;
+	int m_GameArraySize = 200; //I gave up.
+	//Game* pGPtr = nullptr;
 public:
 
 	Platform(string name, string manufacturer)
@@ -131,17 +139,24 @@ public:
 	}
 
 									//Game part
-
-	void CreateGameArray(int size)
+	
+	void ChangeSize(int size) //I tried.
 	{
-		pGPtr = new Game[size];
+		m_GameArraySize = size;
 	}
 
-	void AddToGameArray(Game array[], int pos,Game obj)
+
+	Game* pGPtr = new Game[m_GameArraySize];
+
+	void AddToGameArray(int pos,Game* obj)
 	{
-		array[pos] = obj;
+		pGPtr[pos] = *obj;
 	}
 
+	Game AccessGameArray(int pos)
+	{
+		return pGPtr[pos];
+	}
 	void DeleteGameArray(Game* ptr)
 	{
 		delete[] ptr;

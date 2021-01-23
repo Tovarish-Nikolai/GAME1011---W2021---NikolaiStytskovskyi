@@ -26,7 +26,7 @@ int main()
 	int gameAmount;
 	cin >> gameAmount;
 
-	I.CreateGameArray(gameAmount);
+	I.ChangeSize(gameAmount);
 
 	Game* pGPtr = nullptr;
 	pGPtr = new Game();
@@ -34,9 +34,8 @@ int main()
 	int i = 0;
 	do
 	{
-		i++;
-
-		cout << "\n\n What is game Number " << i << " called. . . ";
+		cin.ignore();
+		cout << "\n\n What is game Number " << i+1 << " called. . . ";
 		string name;
 		getline(cin, name);
 
@@ -48,9 +47,13 @@ int main()
 		string developer;
 		getline(cin, developer);
 
-		
-	} while (i != gameAmount);
+		pGPtr->CreateGameObj(name, publisher, developer);
+		I.AddToGameArray(i,pGPtr);
 
-	//cout << I.m_pGame->GetName();
+		i++;
+	} while (i < gameAmount);
+
+	cout << I.AccessGameArray(0).GetName() << " " << I.AccessGameArray(1).GetName(); 
+	
 	return 0;
 }
