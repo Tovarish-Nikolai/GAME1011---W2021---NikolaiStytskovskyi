@@ -96,7 +96,7 @@ public:
 		pAPtr[pos] = *obj;
 	}
 
-	Achievment AccessGameArray(int pos)
+	Achievment AccessAchievmentArray(int pos)
 	{
 		return pAPtr[pos];
 	}

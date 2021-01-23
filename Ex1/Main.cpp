@@ -25,6 +25,7 @@ int main()
 	cout << "\n How many games would you like to add. . . ";
 	int gameAmount;
 	cin >> gameAmount;
+	cin.ignore(100, '\n');
 
 	I.ChangeSize(gameAmount);
 
@@ -34,7 +35,8 @@ int main()
 	int i = 0;
 	do
 	{
-		cin.ignore();
+		system("CLS");  //Sweep-sweep-sweep!
+
 		cout << "\n\n What is game Number " << i+1 << " called. . . ";
 		string name;
 		getline(cin, name);
@@ -47,13 +49,49 @@ int main()
 		string developer;
 		getline(cin, developer);
 
-		pGPtr->CreateGameObj(name, publisher, developer);
-		I.AddToGameArray(i,pGPtr);
+		pGPtr->CreateGameObj(name, publisher, developer); //Creating new Game object.
+		I.AddToGameArray(i,pGPtr); //Adding it to the array
 
 		i++;
 	} while (i < gameAmount);
 
-	cout << I.AccessGameArray(0).GetName() << " " << I.AccessGameArray(1).GetName(); 
+	for (int g = 0; g < gameAmount; g++)
+	{
+		system("CLS");  //Sweep-sweep-sweep!
+
+		cout << "\n How many achievments do you want to input for " << I.AccessGameArray(g).GetName() << ". . .";
+		int achievmentAmount;
+		cin >> achievmentAmount;
+		cin.ignore(100, '\n');
+
+		Achievment* pAPtr = nullptr;
+		pAPtr = new Achievment();
+
+		int i = 0;
+		do
+		{
+			system("CLS");  //Sweep-sweep-sweep!
+			cin.ignore(100, '\n');
+
+			cout << "\n\n What is achievment Number " << i + 1 << " called. . . ";
+			string title;
+			getline(cin, title);
+
+			cout << "\n\n What is the description for the " << title << " achievment. . . ";
+			string description;
+			getline(cin, description);
+
+			cout << "\n\n Amount of points you get for the " << title << " achievment is. . .";
+			int score;
+			cin >> score;
+
+			pAPtr->CreateAchievmentObj(title, description,score); //Creating new Achievment object.
+			I.AccessGameArray(i).AddToAchievmentArray(i, pAPtr); //Adding it to the array.
+
+			i++;
+		} while (i < achievmentAmount);
+
+	}
 	
 	return 0;
 }
