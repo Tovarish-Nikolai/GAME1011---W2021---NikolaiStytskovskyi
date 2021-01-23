@@ -43,6 +43,9 @@ public:
 	{
 		return m_score;
 	}
+
+
+	//~Achievment();
 };
 
 class Game
@@ -96,6 +99,9 @@ public:
 		delete[] ptr;
 		ptr = nullptr;
 	}
+
+
+	//~Game();
 };
 
 class Platform
@@ -131,6 +137,11 @@ public:
 		pGPtr = new Game[size];
 	}
 
+	void AddToGameArray(Game array[], int pos,Game obj)
+	{
+		array[pos] = obj;
+	}
+
 	void DeleteGameArray(Game* ptr)
 	{
 		delete[] ptr;
@@ -138,5 +149,5 @@ public:
 	}
 
 
-	~Platform();
+	//~Platform();
 };
