@@ -20,7 +20,7 @@ int main()
 
 	Platform I(name, manufacturer);
 
-	cout << "\n You have created a platform named " << I.GetName() << " manufactured by " << I.GetManufacturer() << "!" << endl;
+	cout << "\n You have added a platform named " << I.GetName() << " manufactured by " << I.GetManufacturer() << "!" << endl;
 
 	cout << "\n How many games would you like to add. . . ";
 	int gameAmount;
@@ -59,16 +59,16 @@ int main()
 	{
 		system("CLS");  //Sweep-sweep-sweep!
 
-		cout << "\n How many achievments do you want to input for " << I.AccessGameArray(g).GetName() << ". . .";
+		cout << "\n How many achievments do you want to input for " << I.AccessGameArray(g)->GetName() << ". . .";
 		int achievmentAmount;
 		cin >> achievmentAmount;
-		cin.ignore(100, '\n');
 
+		I.AccessGameArray(g)->SetAchievmentAmount(achievmentAmount);
+		
 		Achievment* pAPtr = nullptr;
 		pAPtr = new Achievment();
 
-		int i = 0;
-		do
+		for (int i = 0; i < achievmentAmount; i++)
 		{
 			system("CLS");  //Sweep-sweep-sweep!
 			cin.ignore(100, '\n');
@@ -85,13 +85,33 @@ int main()
 			int score;
 			cin >> score;
 
-			pAPtr->CreateAchievmentObj(title, description,score); //Creating new Achievment object.
-			I.AccessGameArray(i).AddToAchievmentArray(i, pAPtr); //Adding it to the array.
-
-			i++;
-		} while (i < achievmentAmount);
-
+			pAPtr->CreateAchievmentObj(title, description, score); //Creating new Achievment object.
+			I.AccessGameArray(g)->AddToAchievmentArray(i, pAPtr); //Adding it to the array. Breaks stuff...
+		}
 	}
 	
+	system("CLS");  //Sweep-sweep-sweep!
+
+
+	//Displaying the results.
+	cout << "\n\n Platform : \t" << I.GetName() << endl;
+	for (int g = 0; g < gameAmount; g++)
+	{
+		cout << "\n Game : \t" << I.AccessGameArray(g)->GetName() << endl;
+		cout << "\n Developed by : \t" << I.AccessGameArray(g)->GetDev() << endl;
+		cout << "\n Published by : \t" << I.AccessGameArray(g)->GetPublisher() << endl;
+
+		for (int a = 0; a < I.AccessGameArray(g)->GetAchievmentAmount(); a++)
+		{
+			cout << "\n Achievment : \t" << I.AccessGameArray(g)->AccessAchievmentArray(a)->GetTitle() << endl;
+			cout << "\n Description : \t" << I.AccessGameArray(g)->AccessAchievmentArray(a)->GetDescription() << endl;
+			cout << "\n Score : \t" << I.AccessGameArray(g)->AccessAchievmentArray(a)->GetScore() << endl;
+		}
+	}
+
 	return 0;
 }
+
+// i feel worthless and depressed :(
+
+//Nikolai signing out.

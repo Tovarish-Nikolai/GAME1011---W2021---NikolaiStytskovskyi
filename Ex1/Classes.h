@@ -55,13 +55,15 @@ private:
 	string m_publisher;
 	string m_developer;
 
+	int m_AchievmentAmount = 0;
 	int m_AchievmentArraySize = 200;
 public:
-	Game(string name = "RandomName", string publisher = "Random Publisher", string developer = "RandomDeveloper")
+	Game(string name = "RandomName", string publisher = "Random Publisher", string developer = "RandomDeveloper", int amount = 4)
 	{
 		m_name = name;
 		m_publisher = publisher;
 		m_developer = developer;
+		m_AchievmentAmount = amount;
 	}
 
 	void CreateGameObj(string name, string publisher, string developer)
@@ -96,17 +98,26 @@ public:
 		pAPtr[pos] = *obj;
 	}
 
-	Achievment AccessAchievmentArray(int pos)
+	Achievment* AccessAchievmentArray(int pos)
 	{
-		return pAPtr[pos];
+		return &pAPtr[pos];
 	}
 
-	void DeleteGameArray(Achievment* ptr)
+	void DeleteAchievmentArray(Achievment* ptr)
 	{
 		delete[] ptr;
 		ptr = nullptr;
 	}
 
+	void SetAchievmentAmount(int amount)
+	{
+		m_AchievmentAmount = amount;
+	}
+
+	int GetAchievmentAmount()
+	{
+		return m_AchievmentAmount;
+	}
 
 	//~Game();
 };
@@ -153,9 +164,9 @@ public:
 		pGPtr[pos] = *obj;
 	}
 
-	Game AccessGameArray(int pos)
+	Game* AccessGameArray(int pos)
 	{
-		return pGPtr[pos];
+		return &pGPtr[pos];
 	}
 	void DeleteGameArray(Game* ptr)
 	{
