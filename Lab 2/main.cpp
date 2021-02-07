@@ -59,11 +59,11 @@ int main()
 			int position;
 			if (race == 1)
 			{
-				for (int i = 0; i <= numSaves; i++)
+				for (int i = 0; i < numSaves; i++)
 				{
 					if (CharacterArray[i] == NULL)
 					{
-						CharacterArray[i] = new Human(name, 100, Arsenal[choice]);
+						CharacterArray[i] = new Human(name, 100, Arsenal[choice - 1]);
 						position = i;
 						break;
 					}
@@ -71,11 +71,11 @@ int main()
 			}
 			else if (race == 2)
 			{
-				for (int i = 0; i <= numSaves; i++)
+				for (int i = 0; i < numSaves; i++)
 				{
 					if (CharacterArray[i] == NULL)
 					{
-						CharacterArray[i] = new Orc(name, 100, Arsenal[choice]);
+						CharacterArray[i] = new Orc(name, 100, Arsenal[choice - 1]);
 						position = i;
 						break;
 					}
@@ -83,16 +83,18 @@ int main()
 			}
 			else if (race == 3)
 			{
-				for (int i = 0; i <= numSaves; i++)
+				for (int i = 0; i < numSaves; i++)
 				{
 					if (CharacterArray[i] == NULL)
 					{
-						CharacterArray[i] = new Elf(name, 100, Arsenal[choice]);
+						CharacterArray[i] = new Elf(name, 100, Arsenal[choice - 1]);
 						position = i;
 						break;
 					}
 				}
 			}
+
+			system("CLS");
 
 			cout << "*******************" << endl;
 			cout << "* Your character: *" << endl;
@@ -100,10 +102,55 @@ int main()
 
 			CharacterArray[position]->DisplayInfo();
 			system("pause");
+			system("CLS");
+		}
+		else if (option == 2)
+		{
+			system("CLS");
+
+			cout << "**************************" << endl;
+			cout << "* Displaying save files: *" << endl;
+			cout << "**************************" << endl;
+
+			for (int i = 0; i < numSaves; i++)
+			{
+				if (CharacterArray[i] != NULL)
+				{
+					cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " << endl;
+					CharacterArray[i]->DisplayInfo();
+				}
+				else
+					cout << " File N [ " << i + 1 << " ] is empty." << endl;
+			}
+			system("pause");
+			system("CLS");
+		}
+		else if (option == 3)
+		{
+			system("CLS");
+
+			cout << "**************************************" << endl;
+			cout << "* Which file do you want to destroy? *" << endl;
+			cout << "**************************************" << endl;
+
+			cout << " [ 1 ]     [ 2 ]     [ 3 ]     [ 4 ]     [ 5 ]" << endl;
+			int file; cin >> file;
+
+			CharacterArray[file - 1] = NULL;
+
+			cout << " . . ." << endl;
+			cout << " File destroyed succesfully." << endl;
+
+			system("pause");
+			system("CLS");
 		}
 	} while (option != 4);
 
+	system("CLS");
 
+	cout << "*****************" << endl;
+	cout << "* !!!GOODBYE!!! *" << endl;
+	cout << "*****************" << endl;
 
 return 0;
 }
