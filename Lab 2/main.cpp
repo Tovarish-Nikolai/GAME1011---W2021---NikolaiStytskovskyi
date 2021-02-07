@@ -22,6 +22,8 @@ int main()
 	int option;
 	do
 	{
+		bool stop = false;
+
 		cout << "************************************************************************" << endl;
 		cout << "*	       Welcome to Nikolai's character editor!                  *" << endl;
 		cout << "************************************************************************" << endl;
@@ -61,7 +63,14 @@ int main()
 			{
 				for (int i = 0; i < numSaves; i++)
 				{
-					if (CharacterArray[i] == NULL)
+					if (i == numSaves - 1 && CharacterArray[i] != NULL)
+					{
+						cout << " NO FREE SAVE FILES" << endl;
+						system("pause");
+						stop = true;
+						break;
+					}
+					else if (CharacterArray[i] == NULL)
 					{
 						CharacterArray[i] = new Human(name, 100, Arsenal[choice - 1]);
 						position = i;
@@ -73,19 +82,33 @@ int main()
 			{
 				for (int i = 0; i < numSaves; i++)
 				{
-					if (CharacterArray[i] == NULL)
+					if (i == numSaves - 1 && CharacterArray[i] != NULL)
+					{
+						cout << " NO FREE SAVE FILES" << endl;
+						system("pause");
+						stop = true;
+						break;
+					}
+					else if (CharacterArray[i] == NULL)
 					{
 						CharacterArray[i] = new Orc(name, 100, Arsenal[choice - 1]);
 						position = i;
 						break;
-					}
+					} 
 				}
 			}
 			else if (race == 3)
 			{
 				for (int i = 0; i < numSaves; i++)
 				{
-					if (CharacterArray[i] == NULL)
+					if (i == numSaves - 1 && CharacterArray[i] != NULL)
+					{
+						cout << " NO FREE SAVE FILES" << endl;
+						system("pause");
+						stop = true;
+						break;
+					}
+					else if (CharacterArray[i] == NULL)
 					{
 						CharacterArray[i] = new Elf(name, 100, Arsenal[choice - 1]);
 						position = i;
@@ -94,15 +117,23 @@ int main()
 				}
 			}
 
-			system("CLS");
+			if (stop == true)
+			{
+				cout << " BACK TO THE MENU" << endl;
+				system("pause");
+				system("CLS");
+			}
+			else {
+				system("CLS");
 
-			cout << "*******************" << endl;
-			cout << "* Your character: *" << endl;
-			cout << "*******************" << endl;
+				cout << "*******************" << endl;
+				cout << "* Your character: *" << endl;
+				cout << "*******************" << endl;
 
-			CharacterArray[position]->DisplayInfo();
-			system("pause");
-			system("CLS");
+				CharacterArray[position]->DisplayInfo();
+				system("pause");
+				system("CLS");
+			}
 		}
 		else if (option == 2)
 		{
@@ -120,7 +151,10 @@ int main()
 					CharacterArray[i]->DisplayInfo();
 				}
 				else
+				{
+					cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " << endl;
 					cout << " File N [ " << i + 1 << " ] is empty." << endl;
+				}
 			}
 			system("pause");
 			system("CLS");
