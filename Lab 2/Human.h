@@ -11,7 +11,7 @@ public:
 
 	virtual void DisplayInfo()
 	{
-		cout << " This is " << getName() << ", who is a Human with " << getHealth() << " base HP, wielding " << getWeapon() << "." << endl;
+		cout << " This is " << getName() << ", who is an ordinary Human with " << getHealth() << " base HP, wielding " << getWeapon() << "." << endl;
 	}
 
 
