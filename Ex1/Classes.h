@@ -12,7 +12,7 @@ private:
 
 	int m_score;
 public:
-
+	//constructor
 	Achievment(string title = "Random Title", string description = "A random Description", int score = 10)
 	{
 		m_title = title;
@@ -28,7 +28,7 @@ public:
 	}
 
 
-
+	//getters
 	string GetTitle()
 	{
 		return m_title;
@@ -65,7 +65,7 @@ public:
 		m_developer = developer;
 		m_AchievmentAmount = amount;
 	}
-
+	//for pointer creation
 	void CreateGameObj(string name, string publisher, string developer)
 	{
 		m_name = name;
@@ -74,7 +74,7 @@ public:
 	}
 
 
-
+	//getters
 	string GetName()
 	{
 		return m_name;
@@ -93,6 +93,7 @@ public:
 								//Achievment part
 	Achievment* pAPtr = new Achievment[m_AchievmentArraySize];
 
+	//main glitch, don't know what to do
 	void AddToAchievmentArray(int pos, Achievment* obj)
 	{
 		pAPtr[pos] = *obj;
@@ -109,6 +110,7 @@ public:
 		ptr = nullptr;
 	}
 
+	//does work apparently
 	void SetAchievmentAmount(int amount)
 	{
 		m_AchievmentAmount = amount;
@@ -131,14 +133,14 @@ private:
 	int m_GameArraySize = 200; //I gave up.
 	//Game* pGPtr = nullptr;
 public:
-
+	//constructor
 	Platform(string name, string manufacturer)
 	{
 		m_name = name;
 		m_manufacturer = manufacturer;
 	}
 
-
+	//getters
 	string GetName()
 	{
 		return m_name;
@@ -156,18 +158,20 @@ public:
 		m_GameArraySize = size;
 	}
 
-
+	//creating a Game array
 	Game* pGPtr = new Game[m_GameArraySize];
 
 	void AddToGameArray(int pos,Game* obj)
 	{
 		pGPtr[pos] = *obj;
 	}
-
+	//accessing it
 	Game* AccessGameArray(int pos)
 	{
 		return &pGPtr[pos];
 	}
+
+	//just for show, crashes the system
 	void DeleteGameArray(Game* ptr)
 	{
 		delete[] ptr;
