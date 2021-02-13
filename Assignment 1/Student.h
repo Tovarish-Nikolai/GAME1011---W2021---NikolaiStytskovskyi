@@ -1,7 +1,7 @@
 #pragma once
 #include "Person.h"
 
-enum Program { GAMEDEV, FINANCE, MARKETING, BIOLOGY };
+enum Program { GAMEDEV, FINANCE, MARKETING, BIOLOGY }; 
 
 class Student : public Person
 {
@@ -15,9 +15,9 @@ public:
 	void setCurrSem(int n);
 
 	int getAge();
-	Types getType();
+	Types getType();		//should've been virtual.
 
-	string getPreferred() = 0;
+	string getPreferred() = 0;		//pure virtual "transfer", not sure if necessary, I think they arent.
 	int getAverageHours() = 0;
 private:
 	string m_collegeName;
@@ -25,14 +25,14 @@ private:
 	int m_currentSemester;
 };
 
-inline Student::Student(int age, string name, string collName, Program prog, int currSem, Types type) : Person(age, name, type)
+inline Student::Student(int age, string name, string collName, Program prog, int currSem, Types type) : Person(age, name, type) //param constructor
 {
 	setCollName(collName);
 	setProg(prog);
 	setCurrSem(currSem);
 }
 
-inline Student::Student()
+inline Student::Student() //default
 {
 	setCollName("GBC");
 	setProg(GAMEDEV);
@@ -67,3 +67,13 @@ inline Types Student::getType()
 {
 	return Person::getType();
 }
+
+//inline string Student::getPreferred()			//a shadow of the past.
+//{
+//	return " ";
+//}
+//
+//inline int Student::getAverageHours()
+//{
+//	return 0;
+//}

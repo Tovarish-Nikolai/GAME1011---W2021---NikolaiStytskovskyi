@@ -66,6 +66,6 @@ inline int Gamer::getAverageHours()
 		return 8;
 	else if (getHours() >= 5)
 		return 5;
-	else //if (getHours() <= 3)
+	else //if (getHours() <= 3)  //to avoid Warnings
 		return 3;
 }

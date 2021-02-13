@@ -10,17 +10,17 @@ class Person
 public:
 	Person(int a, string n,Types t);
 	Person();
-	~Person();
+	virtual ~Person(); //virtual destructor for avoiding Heap (memory leak) errors
 
 	void setAge(int a);
 	void setName(string n);
 	void setType(Types t);
 
 	int getAge();
-	Types getType();
+	Types getType();	// in hindsight, this should've been a virtual function.
 
-	virtual string getPreferred();
-	virtual int getAverageHours();
+	virtual string getPreferred() = 0;
+	virtual int getAverageHours() = 0;
 private:
 	int m_age;
 	string m_name;
@@ -28,7 +28,7 @@ private:
 	Types m_type;
 };
 
-inline Person::Person(int a, string n,Types t)
+inline Person::Person(int a, string n,Types t) //param constructor
 {
 	setAge(a);
 	setName(n);
@@ -36,7 +36,7 @@ inline Person::Person(int a, string n,Types t)
 	setType(t);
 }
 
-inline Person::Person()
+inline Person::Person() //default
 {
 	setAge(18);
 	setName("Alex");
@@ -73,12 +73,12 @@ inline Types Person::getType()
 	return m_type;
 }
 
-inline string Person::getPreferred()
-{
-	return " ";
-}
-
-inline int Person::getAverageHours()
-{
-	return 0;
-}
+//inline string Person::getPreferred()		//a shadow of the past.
+//{
+//	return " ";
+//}
+//
+//inline int Person::getAverageHours()
+//{
+//	return 0;
+//}
