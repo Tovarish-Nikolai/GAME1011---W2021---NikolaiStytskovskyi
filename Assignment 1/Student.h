@@ -6,7 +6,7 @@ enum Program { GAMEDEV, FINANCE, MARKETING, BIOLOGY };
 class Student : public Person
 {
 public:
-	Student(int age, string name, string collName, Program prog, int currSem, string type);
+	Student(int age, string name, string collName, Program prog, int currSem, Types type);
 	Student();
 	~Student();
 
@@ -15,7 +15,7 @@ public:
 	void setCurrSem(int n);
 
 	int getAge();
-	string getType();
+	Types getType();
 
 	string getPreferred() = 0;
 	int getAverageHours() = 0;
@@ -25,7 +25,7 @@ private:
 	int m_currentSemester;
 };
 
-inline Student::Student(int age, string name, string collName, Program prog, int currSem, string type) : Person(age, name, type)
+inline Student::Student(int age, string name, string collName, Program prog, int currSem, Types type) : Person(age, name, type)
 {
 	setCollName(collName);
 	setProg(prog);
@@ -63,7 +63,7 @@ inline int Student::getAge()
 	return Person::getAge();
 }
 
-inline string Student::getType()
+inline Types Student::getType()
 {
 	return Person::getType();
 }

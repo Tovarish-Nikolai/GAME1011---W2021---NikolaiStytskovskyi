@@ -1,7 +1,7 @@
 #pragma once
 #include "Student.h"
 
-enum GamingDevice {PC, PS4, XBOX, SWITCH, STADIALOL};
+enum GamingDevice {PC_Gaming, PS4, XBOX, SWITCH, STADIALOL};
 string GDString[5] = { "PC","PS4", "XBOX", "SWITCH", "STADIA(LOL)" };
 
 class Gamer : public Student
@@ -23,7 +23,7 @@ private:
 	int m_hours;
 };
 
-inline Gamer::Gamer(GamingDevice GD, int hrs,int age, string name, string collName, Program prog, int currSem) : Student(age, name, collName, prog, currSem, "gamer")
+inline Gamer::Gamer(GamingDevice GD, int hrs,int age, string name, string collName, Program prog, int currSem) : Student(age, name, collName, prog, currSem, GAMER)
 {
 	setGD(GD);
 	setHours(hrs);
@@ -66,6 +66,6 @@ inline int Gamer::getAverageHours()
 		return 8;
 	else if (getHours() >= 5)
 		return 5;
-	else if (getHours() <= 3)
+	else //if (getHours() <= 3)
 		return 3;
 }

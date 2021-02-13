@@ -3,19 +3,21 @@
 #include <string>
 using namespace std;
 
+enum Types {GAMER, LAMER};
+
 class Person
 {
 public:
-	Person(int a, string n,string t);
+	Person(int a, string n,Types t);
 	Person();
 	~Person();
 
 	void setAge(int a);
 	void setName(string n);
-	void setType(string t);
+	void setType(Types t);
 
 	int getAge();
-	string getType();
+	Types getType();
 
 	virtual string getPreferred();
 	virtual int getAverageHours();
@@ -23,10 +25,10 @@ private:
 	int m_age;
 	string m_name;
 
-	string m_type;
+	Types m_type;
 };
 
-inline Person::Person(int a, string n,string t)
+inline Person::Person(int a, string n,Types t)
 {
 	setAge(a);
 	setName(n);
@@ -39,7 +41,7 @@ inline Person::Person()
 	setAge(18);
 	setName("Alex");
 
-	setType("gamer");
+	setType(GAMER);
 }
 
 inline Person::~Person()
@@ -56,7 +58,7 @@ inline void Person::setName(string n)
 	m_name = n;
 }
 
-inline void Person::setType(string t)
+inline void Person::setType(Types t)
 {
 	m_type = t;
 }
@@ -66,14 +68,14 @@ inline int Person::getAge()
 	return m_age;
 }
 
-inline string Person::getType()
+inline Types Person::getType()
 {
 	return m_type;
 }
 
 inline string Person::getPreferred()
 {
-	return 0;
+	return " ";
 }
 
 inline int Person::getAverageHours()

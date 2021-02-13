@@ -1,7 +1,7 @@
 #pragma once
 #include "Student.h"
 
-enum StreamingDevice { TV, ANDROID_TV, APPLE_TV, PC };
+enum StreamingDevice { TV, ANDROID_TV, APPLE_TV, PC_Internet };
 string SDString[4] = { "TV", "ANDROID", "APPLE TV", "PC" };
 
 class Lamer : public Student
@@ -24,7 +24,7 @@ private:
 };
 
 
-inline Lamer::Lamer(StreamingDevice SD, int hrs, int age, string name, string collName, Program prog, int currSem) : Student(age, name, collName, prog, currSem, "lamer")
+inline Lamer::Lamer(StreamingDevice SD, int hrs, int age, string name, string collName, Program prog, int currSem) : Student(age, name, collName, prog, currSem, LAMER)
 {
 	setSD(SD);
 	setHours(hrs);
@@ -67,6 +67,6 @@ inline int Lamer::getAverageHours()
 		return 8;
 	else if (getHours() >= 5)
 		return 5;
-	else if (getHours() <= 3)
+	else //if (getHours() <= 3)
 		return 3;
 }
