@@ -1,0 +1,32 @@
+0 - Menu
+
+1 - Story 0 & 1
+
+2 - Your Room
+	3 - Desktop
+		4 - Bowl
+			- Spoon
+	5 - Drawer
+		  - Butter Knife
+6 - Hallway Story
+	7 - Hallway
+		8 - Painting
+
+9 - Bathroom Story
+	10 - Bathroom
+		11 - Toilet
+			- Kitchen Knife
+
+12 - Kitchen Story
+	13 - Kitchen
+		14 - Countertop
+			 - Rolling Pin
+			 - Cutting board
+		15 - Fridge
+			16 - Box
+			17 - Butter
+		   - Drawer
+			   - Bread Knife
+		18 - Cabinet
+			19 - Bread
+20 - Finita la commedia
